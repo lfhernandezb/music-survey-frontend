@@ -1,0 +1,75 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-1">
+      <button type="button" class="btn btn-secondary" (click)="back()">❮ Atr&aacute;s</button>
+    </div>
+    <div class="col-sm-1">
+    </div>
+    <div class="col-sm-8">
+      <h2>Encuesta</h2>
+    </div>
+    <div class="col-sm-1">
+    </div>
+    <div class="col-sm-1">
+    </div>
+  </div>
+  <form [formGroup]="surveyForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-sm-3">
+        <label for="musicStyle">Estilo musical:</label>
+      </div>
+      <div class="col-sm-3">
+        <select id="musicStyle" formControlName="musicStyle">
+          <option *ngFor="let estiloMusical of listaEstiloMusical" [value]="estiloMusical.idEstiloMusical">
+            {{estiloMusical.estilo}}
+          </option>
+        </select>
+
+        <div *ngIf="surveyForm.get('musicStyle')?.invalid && surveyForm.get('musicStyle')?.touched">
+          <small *ngIf="surveyForm.get('musicStyle')?.errors?.['required']">Music Style is required.</small>
+        </div>
+
+      </div>
+      <div class="col-sm-3">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-sm-3">
+        <label for="email">Correo electr&oacute;nico:</label>
+      </div>
+      <div class="col-sm-3">
+        <input type="text" id="email" formControlName="email">
+
+        <div *ngIf="surveyForm.get('email')?.invalid && surveyForm.get('email')?.touched">
+          <small *ngIf="surveyForm.get('email')?.errors?.['required']">Email is required.</small>
+          <small *ngIf="surveyForm.get('email')?.errors?.['email']">Invalid email format.</small>
+          <small *ngIf="surveyForm.get('email')?.errors?.['existsEmail']">Email already registered.</small>
+        </div>
+
+      </div>
+      <div class="col-sm-3">
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+      </div>
+      <div class="col-sm-1">
+      </div>
+      <div class="col-sm-2">
+        <button type="submit" [disabled]="surveyForm.invalid" class="btn btn-primary">Guardar</button>
+      </div>
+      <div class="col-sm-1">
+      </div>
+      <div class="col-sm-4">
+      </div>
+    </div>
+  </form>
+  <alert></alert>
+</div>
+

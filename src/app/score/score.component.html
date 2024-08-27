@@ -1,0 +1,50 @@
+<div class="container">
+
+  <div class="row">
+  <div class="row">
+    <div class="col-sm-1">
+      <button type="button" class="btn btn-secondary" (click)="back()">❮ Atr&aacute;s</button>
+    </div>
+    <div class="col-sm-1">
+    </div>
+    <div class="col-sm-8">
+      <h2>Resultados</h2>
+    </div>
+    <div class="col-sm-1">
+    </div>
+    <div class="col-sm-1">
+    </div>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+
+    </div>
+
+    <div class="col-sm-4">
+      <div class="grafico">
+        <div class="content">
+            <div class="bars" *ngFor="let graphModel of graphModelList">
+                <span>{{graphModel.size}}</span>
+                <div class="bar" [style.background-color]='graphModel.color' [style.height]='graphModel.size'></div>
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="legends">
+            <span *ngFor="let graphModel of graphModelList">{{graphModel.legend}}</span>
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <div class="col-sm-4">
+
+    </div>
+
+  </div>
+  <alert></alert>
+</div>
+
+
